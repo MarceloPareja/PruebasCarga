@@ -1,5 +1,5 @@
-const usuario = require('./usuario')
-const {generar_token} = require('../middleware/token_manager');
+const usuario = require('../modelo/usuario')
+const {generar_token} = require('../../middleware/token_manager');
 let lista_usuario = [];
 
 const obtenerPorCorreo = (correo) => {

@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const controlador= require('../controladores/usuario_controller');
+const controlador= require('../controlador/usuario_controller');
 
 const router = Router();
 

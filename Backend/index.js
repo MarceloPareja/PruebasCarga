@@ -1,12 +1,13 @@
-import express from 'express';
-import cors from 'cors';
-import estudianteRoutes from './rutas/estudiante_rutas.js';
+const express = require('express');
+const cors =require('cors');
+
+const usuarioRoutes = require('./rutas/usuario_rutas');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/', estudianteRoutes);
+app.use('/api/auth', usuarioRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {

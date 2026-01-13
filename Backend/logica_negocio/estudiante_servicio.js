@@ -1,4 +1,4 @@
-import { estudiante } from '../datos/modelo/estudiante.js';
+import { estudiante } from '../datos/modelo/';
 import { lista_estudiantes } from '../datos/repositorio/lista_estudiantes.js';
 
 const repo = new lista_estudiantes();

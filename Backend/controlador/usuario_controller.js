@@ -1,4 +1,4 @@
-const usuarioService = require('../modelos/lista_usuario');
+const usuarioService = require('../datos/repositorio/lista_usuario');
 
 const buscarUsuario = (req, res) => {
     try {
