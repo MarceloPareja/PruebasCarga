@@ -2,16 +2,12 @@ import { ReservaService } from '../logica_negocio/reserva_servicio.js';
 
 const service = new ReservaService();
 
-/**
- * Obtener todas las reservas
- */
+
 export const obtener_todos = (req, res) => {
   res.json(service.listar());
 };
 
-/**
- * Crear una nueva reserva
- */
+
 export const crear = (req, res) => {
   try {
     const { fecha, hora, idSala, correo } = req.body;

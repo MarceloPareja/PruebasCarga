@@ -76,7 +76,7 @@
 // const instanciaRepositorio = new Lista_Estudiantes();
 // export default instanciaRepositorio;
 // Implementa el patrón Singleton
-class Lista_Reservas {
+export class Lista_Reservas {
 
   constructor() {
     if (Lista_Reservas.instancia) {
@@ -85,13 +85,6 @@ class Lista_Reservas {
     this.reservas = [];
     this.siguienteId = 1;
     Lista_Reservas.instancia = this;
-  }
-
-  static obtenerInstancia() {
-    if (!Lista_Reservas.instancia) {
-      Lista_Reservas.instancia = new Lista_Reservas();
-    }
-    return Lista_Reservas.instancia;
   }
 
   validarCorreo(correo) {
@@ -109,16 +102,11 @@ class Lista_Reservas {
   }
 
   agregar(reserva) {
+    if (!this.validarCorreo(reserva.correo))
+      throw new Error('Correo inválido');
 
-    // Validar correo
-    if (!this.validarCorreo(reserva.correo)) {
-      throw new Error("Correo inválido");
-    }
-
-    // Validar disponibilidad de sala
-    if (!this.salaDisponible(reserva.idSala, reserva.fecha, reserva.hora)) {
-      throw new Error("La sala ya está reservada en esa fecha y hora");
-    }
+    if (!this.salaDisponible(reserva.idSala, reserva.fecha, reserva.hora))
+      throw new Error('La sala ya está reservada en esa fecha y hora');
 
     reserva.id = this.siguienteId++;
     this.reservas.push(reserva);
@@ -130,11 +118,11 @@ class Lista_Reservas {
   }
 
   buscar_por_id(id) {
-    return this.reservas.find((r) => r.id === id);
+    return this.reservas.find(r => r.id === id);
   }
 
   eliminar_por_id(id) {
-    const index = this.reservas.findIndex((r) => r.id === id);
+    const index = this.reservas.findIndex(r => r.id === id);
     if (index !== -1) {
       this.reservas.splice(index, 1);
       return true;
@@ -142,6 +130,3 @@ class Lista_Reservas {
     return false;
   }
 }
-
-const instanciaRepositorio = new Lista_Reservas();
-export default instanciaRepositorio;
