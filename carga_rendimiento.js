@@ -5,11 +5,11 @@ import { check, sleep } from "k6";
 //Endpoints a probar
 const uris ={
     //Endpoint POST /api/auth/register con correo único.
-    userRegisterURI: "http://localhost:3000/api/auth/register",
+    userRegisterURI: "http://localhost:5000/api/auth/register",
     //Endpoint POST /api/auth/login para obtener el token.
-    userLoginURI: "http://localhost:3000/api/auth/login",
+    userLoginURI: "http://localhost:5000/api/auth/login",
     //Endpoint POST /api/reservas
-    makeReservationURI: "http://localhost:3000/api/reservas",
+    makeReservationURI: "http://localhost:5000/api/reservas",
 }
 
 //Función para probar el login de usuario. Retorna un token para probar las demas funciones
@@ -81,6 +81,7 @@ function testUserRegister(etapa){
 
 //Funcion para probar una URI de GET. Recibe un token como parametro
 function testReservar(info){
+  const vu=__VU;
     const {email, token} = info;
     //Se defina la URL y los headers de la solicitud HTTP. El token se agrega en los headers
     const url=uris.getUserURI;
@@ -88,7 +89,7 @@ function testReservar(info){
         email: email,
         hora: "10:00",
         fecha: "2024-12-31",
-        sala: 1
+        sala: vu
     });
     const params = {
     headers: {
