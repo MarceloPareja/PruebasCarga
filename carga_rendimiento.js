@@ -14,12 +14,14 @@ const uris ={
 
 //Función para probar el login de usuario. Retorna un token para probar las demas funciones
 function testUserRegister(etapa){
+    const vu=__VU;
+    const it=__ITER;
     //Se define la URL, el payload y los headers de la solicitud HTTP
     const url = uris.userRegisterURI;
     const payload = JSON.stringify({
-        nombre: "Usuario1",
-        apellido: "Apellido1", 
-        email: "user1@mail.com",
+        nombre: "username"+vu+"_"+it,
+        apellido: "Apellido"+vu+"_"+it, 
+        email: "user"+vu+"_"+it+"@mail.com",
         clave: "test1234",
     });
     const params = {
@@ -41,10 +43,12 @@ function testUserRegister(etapa){
 }
 
   function testUserLogin(etapa){
+    const vu=__VU;
+    const it=__ITER;
     //Se define la URL, el payload y los headers de la solicitud HTTP
     const url = uris.userLoginURI;
     const payload = JSON.stringify({
-        email: "user1@mail.com",
+        email: "user"+vu+"_"+it+"@mail.com",
         clave: "test1234",
     });
     const params = {
